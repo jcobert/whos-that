@@ -1,5 +1,7 @@
+import React from 'react';
 import '../css/App.css';
 import people from "../people.json";
+import Card from "./Card";
 
 let peopleCards = [];
 for (let i = 0; i < people.length; i++) {
@@ -23,10 +25,10 @@ for (let i = 0; i < people.length; i++) {
   );
 }
 
-
 function App() {
   return (
-    <div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      {peopleCards}
     </div>
   );
 }

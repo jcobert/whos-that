@@ -3,7 +3,7 @@
         "name": "Casey Kemp",
         "nicknames": ["Butternut"],
         "img": "/images/avatars/1.jpg",
-        "loc": "St. Paul, M",
+        "loc": "St. Paul, MN",
         "dob": "1988-4-7",
         "assoc": ["Home"],
         "rel": "Dating",
@@ -12,7 +12,7 @@
     {
         "id": 2,
         "name": "Xavier Mueller",
-        "nicknames": ["DJ", "Sirius"],
+        "nicknames": ["XM", "Sirius"],
         "img": "/images/avatars/2.jpg",
         "loc": "Honolulu, HI",
         "dob": "1989-7-30",

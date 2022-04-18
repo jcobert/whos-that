@@ -15,7 +15,7 @@ function Details(props) {
     function listItems(items) {
         const output = [];
         for (let i = 0; i < items.length; i++) {
-            output.push(<p className="info" key={i}>{items[i]}</p>);
+            output.push(<p className="block m-0" key={i}>{items[i]}</p>);
         }
         return (output);
     }
@@ -39,37 +39,37 @@ function Details(props) {
         if (props.relationship === "Dating") {
             relationshipStatus = `${props.relationship}`;
         }
-        partnerImgTag = <a className="partner" href={`#${props.partner.id}`} onClick={goToPartner}><img src={props.partner.img} alt="avatar_img" /></a>
+        partnerImgTag = <a className="mt-2" href={`#${props.partner.id}`} onClick={goToPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></a>
     }
 
     return (
-        <div className="details-wrapper">
+        <div className="">
             <div className="">
                 <div className="details-container">
                     <Collapse in={props.expandState}>
                         <div className={props.expandState}>
-                            <div className="grid grid-cols-4">
-                                <div className="details row">
-                                    <div className="details-col col-3">
-                                        <p className="title">Age</p>
+                            <div className="flex flex-col gap-y-8 px-4">
+                                <div className="grid grid-cols-5">
+                                    <div className="col-start-1 col-span-1 justify-self-start">
+                                        <p className="font-semibold text-lg">Age</p>
                                         <p className="info">{props.birthday === "" ? "--" : calculateAge(props.birthday)}</p>
                                     </div>
-                                    <div className="locale details-col col-5">
-                                        <p className="title">Location</p>
+                                    <div className="col-start-2 col-span-2 justify-self-center">
+                                        <p className="font-semibold text-lg">Location</p>
                                         <p className="info">{props.location}</p>
                                     </div>
-                                    <div className="details-col col-4">
-                                        <p className="title">Nicknames</p>
+                                    <div className="col-start-4 col-span-2 justify-self-end">
+                                        <p className="font-semibold text-lg">Nicknames</p>
                                         {listItems(props.nicknames)}
                                     </div>
                                 </div>
-                                <div className="details row">
-                                    <div className="details-col col-6">
-                                        <p className="title">Associations</p>
+                                <div className="grid grid-cols-4">
+                                    <div className="col-start-1 col-span-2 justify-self-start">
+                                        <p className="font-semibold text-lg">Associations</p>
                                         {listItems(props.association)}
                                     </div>
-                                    <div className="details-col col-6">
-                                        <p className="title">{relationshipStatus}</p>
+                                    <div className="col-start-3 col-span-2 flex flex-col justify-self-end">
+                                        <p className="font-semibold text-lg">{relationshipStatus}</p>
                                         <p className="info">{props.relationship === "Single" ? "(Last I checked)" : props.partner.name}</p>
                                         {partnerImgTag}
                                     </div>
@@ -78,14 +78,14 @@ function Details(props) {
                         </div>
                     </Collapse>
                 </div>
-            </div>
+            </div >
             <div className="show-more">
                 <button className={`btn-show-more ${visible ? "rotate-open" : "rotate-closed"}`}
                     onClick={handleClick}>
                     <i className="show-more-icon fa-duotone fa-circle-plus fa-4x"></i>
                 </button>
             </div>
-        </div>
+        </div >
     );
 }
 

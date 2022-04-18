@@ -34,12 +34,12 @@ function Card(props) {
     return (
         <>
             <div className="text-center">
-                <div id={props.id} className="bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto mb-8 md:mb-12 p-3 md:p-6 rounded-xl border-2 border-gray-300 shadow-md">
+                <div id={props.id} className="bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto mb-8 md:mb-12 p-3 md:p-6 pb-0 md:pb-0 rounded-xl border-2 border-gray-300 shadow-md">
                     <div className="">
-                        <div className="relative -top-8">
-                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100" src={props.img} alt="avatar_img"/>
+                        <div className="relative bottom-8 md:bottom-12">
+                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md" src={props.img} alt="avatar_img"/>
                         </div>
-                        <h2 className="mb-2 md:mb-8 -mt-4 text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
+                        <h2 className="mb-4 md:mb-8 -mt-4 text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
                     </div>
                     <Details
                         association={props.assoc}

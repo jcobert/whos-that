@@ -1,121 +1,125 @@
 [{
-        "id": "1",
+        "id": 1,
         "name": "Casey Kemp",
         "nicknames": ["Butternut"],
         "img": "/images/avatars/1.png",
         "loc": "St. Paul, M",
         "dob": "1988-4-7",
         "assoc": ["Home"],
-        "rel": "3"
+        "rel": "Dating",
+        "partner": 3
     },
     {
-        "id": "2",
+        "id": 2,
         "name": "Xavier Mueller",
         "nicknames": ["DJ", "Sirius"],
         "img": "/images/avatars/2.png",
         "loc": "Honolulu, HI",
         "dob": "1989-7-30",
         "assoc": ["Work"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "3",
+        "id": 3,
         "name": "Stanley Andersen",
         "nicknames": [],
         "img": "/images/avatars/3.png",
         "loc": "Brooklyn, NY",
         "dob": "1992-3-15",
         "assoc": ["Significant other"],
-        "rel": "1"
+        "rel": "Dating",
+        "partner": 1
     },
     {
-        "id": "4",
+        "id": 4,
         "name": "Melanie Stephenson",
         "nicknames": ["Mel", "Chicken Legs"],
         "img": "/images/avatars/4.png",
         "loc": "Charlotte, NC",
         "dob": "1990-4-30",
         "assoc": ["College"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "5",
+        "id": 5,
         "name": "Caitlyn Sosa",
         "nicknames": ["Catie", "Rosie"],
         "img": "/images/avatars/5.png",
         "loc": "Anaheim, CA",
         "dob": "1997-3-24",
         "assoc": ["Home"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "6",
+        "id": 6,
         "name": "Kendall Newman",
         "nicknames": ["Gumdrop"],
         "img": "/images/avatars/6.png",
         "loc": "New Orleans, LA",
         "dob": "1992-7-6",
         "assoc": ["Work"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "7",
+        "id": 7,
         "name": "Gina Holder",
         "nicknames": ["Gigi", "Chewbacca"],
         "img": "/images/avatars/7.png",
         "loc": "Glendale, AZ",
         "dob": "1995-11-30",
         "assoc": ["Work"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "8",
+        "id": 8,
         "name": "Urijah Reynolds",
         "nicknames": ["Uri", "Dilly Dally"],
         "img": "/images/avatars/8.png",
         "loc": "Fort Worth, TX",
         "dob": "1990-7-27",
         "assoc": ["Work"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "9",
+        "id": 9,
         "name": "Mckayla Howard",
         "nicknames": ["Pecan"],
         "img": "/images/avatars/9.png",
         "loc": "Henderson, NV",
         "dob": "1996-6-18",
         "assoc": ["Home"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "10",
+        "id": 10,
         "name": "Victor Franklin",
         "nicknames": ["Vic", "Thor", "Captain"],
         "img": "/images/avatars/10.png",
         "loc": "Fresno, CA",
         "dob": "1993-2-1",
         "assoc": ["College"],
-        "rel": "12"
+        "rel": "Engaged",
+        "partner": 12
     },
     {
-        "id": "11",
+        "id": 11,
         "name": "Taniyah Farrell",
         "nicknames": ["Maestro"],
         "img": "/images/avatars/11.png",
         "loc": "Philadelphia, PA",
         "dob": "1994-4-12",
         "assoc": ["College"],
-        "rel": ""
+        "rel": "Single"
     },
     {
-        "id": "12",
+        "id": 12,
         "name": "Haven Atkin",
         "nicknames": [],
         "img": "/images/avatars/12.png",
         "loc": "Kansas City, MO",
         "dob": "1993-9-9",
         "assoc": ["Significant other"],
-        "rel": "10"
+        "rel": "Engaged",
+        "partner": 10
     }
 ]

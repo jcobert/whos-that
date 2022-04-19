@@ -45,7 +45,7 @@ function Details(props) {
     return (
         <div className="">
             <div className="">
-                <div className="details-container">
+                <div className="hidden">
                     <Collapse in={props.expandState}>
                         <div className={props.expandState}>
                             <div className="flex flex-col gap-y-8 px-4">
@@ -78,14 +78,14 @@ function Details(props) {
                         </div>
                     </Collapse>
                 </div>
-            </div >
+            </div>
             <div className="relative -bottom-5">
-                <button className={`rounded-full outline outline-2 outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
+                <button className={`rounded-full outline outline-1 outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
                     onClick={handleClick}>
                     <i className="expand-button fa-duotone fa-circle-plus fa-3x"></i>
                 </button>
             </div>
-        </div >
+        </div>
     );
 }
 

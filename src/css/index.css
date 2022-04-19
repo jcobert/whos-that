@@ -11,9 +11,12 @@
         --fa-secondary-opacity: 0.9;
         --fa-primary-opacity: 1;
     }
+}
 
-    /* .expand-button .fa-secondary {
-        stroke: rgb(177, 177, 177);
-        stroke-width: 0.85rem;
-    } */
+.active-card {
+    transform: scale(1.015);
+    transition: all ease-in-out 175ms;
+    background-color: #e9eef1;
+    border-color: rgba(26, 107, 154, 0.89);
+    box-shadow: 0 0.45rem 1.25rem #939ba199;
 }

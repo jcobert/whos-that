@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .expand-button {
+        text-align: center;
+        display: block;
+        --fa-primary-color: rgb(104, 104, 104);
+        --fa-secondary-color: #ebebeb;
+        --fa-secondary-opacity: 0.9;
+        --fa-primary-opacity: 1;
+    }
+
+    /* .expand-button .fa-secondary {
+        stroke: rgb(177, 177, 177);
+        stroke-width: 0.85rem;
+    } */
+}

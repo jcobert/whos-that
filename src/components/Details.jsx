@@ -79,10 +79,10 @@ function Details(props) {
                     </Collapse>
                 </div>
             </div >
-            <div className="show-more">
-                <button className={`btn-show-more ${visible ? "rotate-open" : "rotate-closed"}`}
+            <div className="relative -bottom-5">
+                <button className={`rounded-full outline outline-2 outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
                     onClick={handleClick}>
-                    <i className="show-more-icon fa-duotone fa-circle-plus fa-4x"></i>
+                    <i className="expand-button fa-duotone fa-circle-plus fa-3x"></i>
                 </button>
             </div>
         </div >

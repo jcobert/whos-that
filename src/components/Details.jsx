@@ -1,11 +1,13 @@
 import React from "react";
-import Collapse from "react-bootstrap/Collapse";
+import useCollapse from "react-collapsed";
+
 
 function Details(props) {
     let relationshipStatus = "Single";
     let partnerImgTag = "";
 
     const [visible, toggleVisible] = React.useState(props.expandState);
+    const { getCollapseProps, getToggleProps } = useCollapse({ visible })
 
     function handleClick() {
         toggleVisible(!visible);
@@ -45,43 +47,43 @@ function Details(props) {
     return (
         <div className="">
             <div className="">
-                <div className="hidden">
-                    <Collapse in={props.expandState}>
-                        <div className={props.expandState}>
-                            <div className="flex flex-col gap-y-8 px-4">
-                                <div className="grid grid-cols-5">
-                                    <div className="col-start-1 col-span-1 justify-self-start">
-                                        <p className="font-semibold text-lg">Age</p>
-                                        <p className="info">{props.birthday === "" ? "--" : calculateAge(props.birthday)}</p>
-                                    </div>
-                                    <div className="col-start-2 col-span-2 justify-self-center">
-                                        <p className="font-semibold text-lg">Location</p>
-                                        <p className="info">{props.location}</p>
-                                    </div>
-                                    <div className="col-start-4 col-span-2 justify-self-end">
-                                        <p className="font-semibold text-lg">Nicknames</p>
-                                        {listItems(props.nicknames)}
-                                    </div>
+                <div className="">
+                    <div {...getCollapseProps()} className={props.expandState}>
+                        <div className="flex flex-col gap-y-8 px-4">
+                            <div className="grid grid-cols-5">
+                                <div className="col-start-1 col-span-1 justify-self-start">
+                                    <p className="font-semibold text-lg">Age</p>
+                                    <p className="info">{props.birthday === "" ? "--" : calculateAge(props.birthday)}</p>
                                 </div>
-                                <div className="grid grid-cols-4">
-                                    <div className="col-start-1 col-span-2 justify-self-start">
-                                        <p className="font-semibold text-lg">Associations</p>
-                                        {listItems(props.association)}
-                                    </div>
-                                    <div className="col-start-3 col-span-2 flex flex-col justify-self-end">
-                                        <p className="font-semibold text-lg">{relationshipStatus}</p>
-                                        <p className="info">{props.relationship === "Single" ? "(Last I checked)" : props.partner.name}</p>
-                                        {partnerImgTag}
-                                    </div>
+                                <div className="col-start-2 col-span-2 justify-self-center">
+                                    <p className="font-semibold text-lg">Location</p>
+                                    <p className="info">{props.location}</p>
+                                </div>
+                                <div className="col-start-4 col-span-2 justify-self-end">
+                                    <p className="font-semibold text-lg">Nicknames</p>
+                                    {listItems(props.nicknames)}
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-4">
+                                <div className="col-start-1 col-span-2 justify-self-start">
+                                    <p className="font-semibold text-lg">Associations</p>
+                                    {listItems(props.association)}
+                                </div>
+                                <div className="col-start-3 col-span-2 flex flex-col justify-self-end">
+                                    <p className="font-semibold text-lg">{relationshipStatus}</p>
+                                    <p className="info">{props.relationship === "Single" ? "(Last I checked)" : props.partner.name}</p>
+                                    {partnerImgTag}
                                 </div>
                             </div>
                         </div>
-                    </Collapse>
+                    </div>
                 </div>
             </div>
             <div className="relative -bottom-5">
                 <button className={`rounded-full outline outline-1 outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
-                    onClick={handleClick}>
+                    {...getToggleProps({
+                        onClick: () => toggleVisible((prevExpanded) => !prevExpanded),
+                    })}>
                     <i className="expand-button fa-duotone fa-circle-plus fa-3x"></i>
                 </button>
             </div>

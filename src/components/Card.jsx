@@ -9,12 +9,12 @@ function Card(props) {
 
     function handleShow() {
         setShow(true);
-        document.getElementById("root").classList.add("blur-bg-modal");
+        document.getElementById("root").classList.add("blur-md");
     }
 
     function handleClose() {
         setShow(false);
-        document.getElementById("root").classList.remove("blur-bg-modal");
+        document.getElementById("root").classList.remove("blur-md");
     }
 
     function handleCardClick() {
@@ -37,7 +37,14 @@ function Card(props) {
                 <div id={props.id} className="bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto mb-8 md:mb-12 p-3 md:p-6 pb-0 md:pb-0 rounded-xl border border-[#b3b3b3] shadow-md" onMouseEnter={handleCardClick} onMouseLeave={handleCardExit} onFocus={handleCardClick}>
                     <div className="">
                         <div className="relative bottom-8 md:bottom-12">
-                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md" src={props.img} alt="avatar_img"/>
+                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md" src={props.img} alt="avatar_img" onClick={handleShow} />
+
+                            {/* <ModalImage
+                                small={props.img}
+                                medium={props.img}
+                                className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md"
+                            /> */}
+
                         </div>
                         <h2 className="mb-4 md:mb-8 -mt-4 md:-mt-8 text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
                     </div>
@@ -60,14 +67,14 @@ function Card(props) {
                 show={show}
                 onHide={handleClose}
                 centered
-                dialogClassName="avatar-modal"
-                autoFocus={true}
+                dialogClassName="w-10/12 md:w-7/12 max-w-xl m-auto md:mx-auto"
+                autoFocus={true}               
             >
                 <Modal.Body>
-                    <img className="img-fluid avatar-lg" src={props.img} alt="avatar_img" />
+                    <img className="max-w-full h-auto object-cover object-center w-full" src={props.img} alt="avatar_img" />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Modal.Title className="name">{props.name}</Modal.Title>
+                    <Modal.Title className="text-center text-[#2B4E6A] text-4xl">{props.name}</Modal.Title>
                 </Modal.Footer>
             </Modal>
         </>

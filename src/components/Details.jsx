@@ -80,7 +80,7 @@ function Details(props) {
                 </div>
             </div>
             <div className="relative -bottom-5">
-                <button className={`rounded-full outline outline-1 outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
+                <button className={`rounded-full shadow-md outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
                     {...getToggleProps({
                         onClick: () => toggleVisible((prevExpanded) => !prevExpanded),
                     })}>

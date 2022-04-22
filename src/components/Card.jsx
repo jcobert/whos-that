@@ -1,6 +1,8 @@
 import React from "react";
 import Details from "./Details";
 import Modal from 'react-bootstrap/Modal'
+import CloseButton from 'react-bootstrap/CloseButton';
+// import "bootstrap/dist/css/bootstrap.min.css"
 
 function Card(props) {
     const [show, setShow] = React.useState(false);
@@ -37,7 +39,7 @@ function Card(props) {
                 <div id={props.id} className="bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto mb-8 md:mb-12 p-3 md:p-6 pb-0 md:pb-0 rounded-xl border border-[#b3b3b3] shadow-md" onMouseEnter={handleCardClick} onMouseLeave={handleCardExit} onFocus={handleCardClick}>
                     <div className="">
                         <div className="relative bottom-8 md:bottom-12">
-                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md" src={props.img} alt="avatar_img" onClick={handleShow} />
+                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleShow} />
 
                             {/* <ModalImage
                                 small={props.img}
@@ -68,9 +70,18 @@ function Card(props) {
                 onHide={handleClose}
                 centered
                 dialogClassName="w-10/12 md:w-7/12 max-w-xl m-auto md:mx-auto"
-                autoFocus={true}               
+                autoFocus={true}
             >
+                <div className="absolute z-50 -right-2 -top-2 bg-slate-300 shadow-sm w-fit rounded-full p-1">
+                    <CloseButton
+                        variant=""
+                        onClick={handleClose}
+                    />
+                </div>
                 <Modal.Body>
+                    {/* <div className="absolute -right-4 -top-4 text-center text-black bg-gray-200 w-8 h-8 rounded-full">
+                        <i className="fa-regular fa-circle-xmark fa-2x"></i>
+                    </div> */}
                     <img className="max-w-full h-auto object-cover object-center w-full" src={props.img} alt="avatar_img" />
                 </Modal.Body>
                 <Modal.Footer>

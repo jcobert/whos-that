@@ -2,7 +2,6 @@ import React from "react";
 import Details from "./Details";
 import Modal from 'react-bootstrap/Modal'
 import CloseButton from 'react-bootstrap/CloseButton';
-// import "bootstrap/dist/css/bootstrap.min.css"
 
 function Card(props) {
     const [show, setShow] = React.useState(false);
@@ -39,14 +38,7 @@ function Card(props) {
                 <div id={props.id} className="bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto mb-8 md:mb-12 p-3 md:p-6 pb-0 md:pb-0 rounded-xl border border-[#b3b3b3] shadow-md" onMouseEnter={handleCardClick} onMouseLeave={handleCardExit} onFocus={handleCardClick}>
                     <div className="">
                         <div className="relative bottom-8 md:bottom-12">
-                            <img className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleShow} />
-
-                            {/* <ModalImage
-                                small={props.img}
-                                medium={props.img}
-                                className="rounded-full w-48 mx-auto border-4 border-gray-100 shadow-md"
-                            /> */}
-
+                            <img className="rounded-full w-48 h-48 object-cover mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleShow} />
                         </div>
                         <h2 className="mb-4 md:mb-8 -mt-4 md:-mt-8 text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
                     </div>
@@ -79,9 +71,6 @@ function Card(props) {
                     />
                 </div>
                 <Modal.Body>
-                    {/* <div className="absolute -right-4 -top-4 text-center text-black bg-gray-200 w-8 h-8 rounded-full">
-                        <i className="fa-regular fa-circle-xmark fa-2x"></i>
-                    </div> */}
                     <img className="max-w-full h-auto object-cover object-center w-full" src={props.img} alt="avatar_img" />
                 </Modal.Body>
                 <Modal.Footer>

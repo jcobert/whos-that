@@ -23,7 +23,8 @@ function Details(props) {
     }
 
     function calculateAge(dob) {
-        let birthday = new Date(dob);
+        let [year, month, day] = dob.split('-');
+        let birthday = new Date(year, month - 1, day);
         let ageDifMs = Date.now() - birthday.getTime();
         let ageDate = new Date(ageDifMs);
         return Math.abs(ageDate.getUTCFullYear() - 1970);

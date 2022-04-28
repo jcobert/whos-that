@@ -37,7 +37,7 @@
         "img": "/images/avatars/4.jpg",
         "loc": "Charlotte, NC",
         "dob": "1990-4-30",
-        "assoc": ["College"],
+        "assoc": ["College", "Home"],
         "rel": "Single"
     },
     {

@@ -14,12 +14,14 @@ function FilterButton(props) {
     }
 
     return (
-        <button
-            id={props.id}
-            className="bg-blue-400 text-white w-24 h-10 rounded-sm mx-auto my-8"
-            onClick={handleFilter}
-        >{props.id}
-        </button>
+        <>
+            <button
+                id={props.id}
+                className="bg-[#3c76bd] text-white self-center w-5/12 h-12 md:w-32 md:h-12 px-2 rounded-sm"
+                onClick={handleFilter}
+            >{props.id}
+            </button>
+        </>
     );
 }
 

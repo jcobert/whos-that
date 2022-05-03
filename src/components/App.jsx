@@ -29,6 +29,9 @@ for (let i = 0; i < people.length; i++) {
 }
 
 let uniqueAssoc = [...new Set(associations.flat())].sort();
+let associationList = uniqueAssoc;
+associationList.push("All");
+associationList.sort();
 
 function App() {
   const [filtered, setFiltered] = React.useState(false);
@@ -45,7 +48,7 @@ function App() {
             selectionState={selection}
             setSelectionState={setSelection}
             cards={peopleCards}
-            associations={uniqueAssoc}
+            associations={associationList}
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-16">

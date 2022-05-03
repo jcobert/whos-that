@@ -2,7 +2,6 @@ import React from 'react';
 import people from "../people.json";
 import Header from "./Header";
 import Card from "./Card";
-import FilterButton from "./FilterButton";
 import FilterListbox from "./FilterListbox";
 
 let peopleCards = [];
@@ -35,28 +34,11 @@ function App() {
   const [filtered, setFiltered] = React.useState(false);
   const [selection, setSelection] = React.useState(peopleCards);
 
-  let filterButtons = [];
-  for (let i = 0; i < uniqueAssoc.length; i++) {
-    filterButtons.push(
-      <FilterButton
-        key={i}
-        id={uniqueAssoc[i]}
-        filteredState={filtered}
-        setFilteredState={setFiltered}
-        selectionState={selection}
-        setSelectionState={setSelection}
-        cards={peopleCards}
-        associations={uniqueAssoc}
-      />
-    );
-  }
-
   return (
     <>
       <Header />
       <div className="mt-16">
-        <div className="max-w-7xl mx-auto mt-24">
-          {/* <div className="flex flex-col md:flex-row md:gap-x-4 gap-y-4 justify-center ">{filterButtons}</div> */}
+        <div className="max-w-7xl mx-auto mt-24">          
           <FilterListbox
             filteredState={filtered}
             setFilteredState={setFiltered}

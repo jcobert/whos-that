@@ -20,8 +20,13 @@ function FilterListbox(props) {
     }
 
     function handleFilter() {
-        props.setSelectionState(filterPeopleByAssoc(selected));
-        props.setFilteredState(true);
+        if (selected === "All") {
+            props.setSelectionState(props.cards);
+        }
+        else {
+            props.setSelectionState(filterPeopleByAssoc(selected));
+            props.setFilteredState(true);
+        }
     }
 
     return (

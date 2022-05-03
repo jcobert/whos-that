@@ -3,6 +3,7 @@ import people from "../people.json";
 import Header from "./Header";
 import Card from "./Card";
 import FilterButton from "./FilterButton";
+import FilterListbox from "./FilterListbox";
 
 let peopleCards = [];
 let associations = [];
@@ -45,6 +46,7 @@ function App() {
         selectionState={selection}
         setSelectionState={setSelection}
         cards={peopleCards}
+        associations={uniqueAssoc}
       />
     );
   }
@@ -53,10 +55,18 @@ function App() {
     <>
       <Header />
       <div className="mt-16">
-      <div className="max-w-7xl mx-auto mt-24">
-        <div className="flex flex-col md:flex-row md:gap-x-4 gap-y-4 justify-center ">{filterButtons}</div>
-      </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-16">          
+        <div className="max-w-7xl mx-auto mt-24">
+          {/* <div className="flex flex-col md:flex-row md:gap-x-4 gap-y-4 justify-center ">{filterButtons}</div> */}
+          <FilterListbox
+            filteredState={filtered}
+            setFilteredState={setFiltered}
+            selectionState={selection}
+            setSelectionState={setSelection}
+            cards={peopleCards}
+            associations={uniqueAssoc}
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-16">
           {selection}
         </div>
       </div>

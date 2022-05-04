@@ -2,8 +2,10 @@ import React from 'react';
 import people from "../people.json";
 import Header from "./Header";
 import Card from "./Card";
+import FilterListbox from "./FilterListbox";
 
 let peopleCards = [];
+let associations = [];
 for (let i = 0; i < people.length; i++) {
   let p = i;
   if (people[i].hasOwnProperty("partner")) {
@@ -23,14 +25,35 @@ for (let i = 0; i < people.length; i++) {
       dob={people[i].dob}
     />
   );
+  associations.push(people[i].assoc);
 }
 
+let uniqueAssoc = [...new Set(associations.flat())].sort();
+let associationList = uniqueAssoc;
+associationList.push("All");
+associationList.sort();
+
 function App() {
+  const [filtered, setFiltered] = React.useState(false);
+  const [selection, setSelection] = React.useState(peopleCards);
+
   return (
     <>
-    <Header/>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-16">
-        {peopleCards}
+      <Header />
+      <div className="mt-16">
+        <div className="max-w-7xl mx-auto mt-24">          
+          <FilterListbox
+            filteredState={filtered}
+            setFilteredState={setFiltered}
+            selectionState={selection}
+            setSelectionState={setSelection}
+            cards={peopleCards}
+            associations={associationList}
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
+          {selection}
+        </div>
       </div>
     </>
   );

@@ -51,7 +51,7 @@ function Header() {
     return (
         <Disclosure
             as="nav"
-            className={`bg-slate-500 fixed w-full z-50 top-0 shadow-md`}
+            className={`bg-slate-500 fixed w-full z-50 top-0 shadow-md mb-16`}
             onClick={setVisible}
             >
             {({ open }) => (

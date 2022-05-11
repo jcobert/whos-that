@@ -36,10 +36,10 @@ function Card(props) {
 
     return (
         <>
-            <div className="text-center mt-8 mb-12 md:mt-12 md:mb-16" {...getToggleProps({
+            <div className="text-center mt-8 mb-12 md:mt-12 md:mb-16 focus:outline-none" {...getToggleProps({
                 onClick: () => setExpanded((prevExpanded) => !prevExpanded),
             })}>
-                <div id={props.id} className={`bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto p-3 md:p-6 rounded-xl border border-[#b3b3b3] shadow-md ${expanded ? "pb-4 md:pb-4 active-card" : "pb-4 md:pb-0"}`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter}>
+                <div id={props.id} className={`bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto p-3 md:p-6 rounded-xl border border-[#b3b3b3] shadow-md ${expanded ? "pb-8 md:pb-4 active-card" : "pb-4 md:pb-0"}`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter}>
                     <div className="">
                         <div className="relative bottom-8 md:bottom-12">
                             <img className="rounded-full w-48 h-48 object-cover mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleAvatarShow} />
@@ -62,8 +62,8 @@ function Card(props) {
                         />
                     </div>
                 </div>
-                <div onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter} className="relative bottom-[1.35rem] scale-75 w-fit h-10 mx-auto -mb-10">
-                    <button className={`rounded-full w-20 h-10 shadow-sm bg-[#ffffffdf] outline outline-[#d0d0d0] hover:outline-slate-200 ${expanded ? "rotate-180 transition-all" : "transition-all"}`}                   >
+                <div onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter} className="relative rounded-full md:outline outline-[#d0d0d0] hover:outline-slate-200 bottom-[1.35rem] scale-75 w-fit h-10 mx-auto -mb-10">
+                    <button className={`rounded-full w-20 h-10 shadow-sm bg-[#ffffffdf] rounded-all ${expanded ? "rotate-180 transition-all" : "transition-all"}`}                   >
                         <i className={`expand-button mx-auto text-slate-400 fa-solid fa-ellipsis fa-2x ${expanded ? "fa-angle-up transition-all" : "transition-all"}`}></i>                       
                     </button>
                 </div>

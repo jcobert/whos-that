@@ -9,6 +9,11 @@ function Details(props) {
     const [visible, toggleVisible] = React.useState(props.expandState);
     const { getCollapseProps, getToggleProps } = useCollapse({ visible })
 
+    // React.useEffect(() => {
+    //     // toggleVisible(!props.expandState);
+    //     toggleVisible((prevExpanded) => !prevExpanded);
+    // }, [props.expandState]);
+
     function handleClick() {
         toggleVisible(!visible);
         props.setExpandState(!props.expandState);
@@ -49,7 +54,7 @@ function Details(props) {
         <div className="">
             <div className="">
                 <div className="">
-                    <div {...getCollapseProps()} className={props.expandState}>
+                    <div className={props.expandState}>
                         <div className="flex flex-col gap-y-8 px-4">
                             <div className="grid grid-cols-5">
                                 <div className="col-start-1 col-span-1 justify-self-start">
@@ -80,14 +85,14 @@ function Details(props) {
                     </div>
                 </div>
             </div>
-            <div className="relative -bottom-5">
+            {/* <div className="relative -bottom-5">
                 <button className={`rounded-full shadow-md outline-[#9f9f9f] ${visible ? "rotate-45 transition-all" : "transition-all"}`}
                     {...getToggleProps({
                         onClick: () => toggleVisible((prevExpanded) => !prevExpanded),
                     })}>
                     <i className="expand-button fa-duotone fa-circle-plus fa-3x"></i>
                 </button>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -34,11 +34,6 @@ function Card(props) {
         document.getElementById(props.id).classList.remove("active-card");
     }
 
-    function handleCardClick() {
-        console.log("card clicked.");
-        console.log(expanded);
-    }
-
     return (
         <>
             <div className="text-center mt-8 mb-12 md:mt-12 md:mb-16" {...getToggleProps({

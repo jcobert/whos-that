@@ -189,7 +189,7 @@ function Header() {
                 </>
             )}
         </Disclosure>
-    )
+    );
 }
 
 export default Header;

@@ -2,6 +2,7 @@ import React from 'react';
 import people from "../people.json";
 import Header from "./Header";
 import Card from "./Card";
+import Footer from "./Footer"
 import FilterListbox from "./FilterListbox";
 
 let peopleCards = [];
@@ -38,24 +39,27 @@ function App() {
   const [selection, setSelection] = React.useState(peopleCards);
 
   return (
-    <>
+    <div className='flex-grow'>
       <Header />
-      <div className="mt-16">
-        <div className="max-w-7xl mx-auto mt-24">          
-          <FilterListbox
-            filteredState={filtered}
-            setFilteredState={setFiltered}
-            selectionState={selection}
-            setSelectionState={setSelection}
-            cards={peopleCards}
-            associations={associationList}
-          />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
-          {selection}
+      <div className='min-h-screen flex flex-col'>
+        <div className="mt-16">
+          <div className="max-w-7xl mx-auto mt-24">
+            <FilterListbox
+              filteredState={filtered}
+              setFilteredState={setFiltered}
+              selectionState={selection}
+              setSelectionState={setSelection}
+              cards={peopleCards}
+              associations={associationList}
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
+            {selection}
+          </div>
         </div>
       </div>
-    </>
+      <Footer />
+    </div>
   );
 }
 

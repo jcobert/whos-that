@@ -64,7 +64,7 @@ function Card(props) {
                 </div>
                 <div onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter} className="relative rounded-2xl bottom-[1.5rem] scale-75 w-fit h-12 mx-auto -mb-10">
                     <button className={`rounded-2xl w-20 h-12 bg-[#C5D4DE] rounded-all ${expanded ? "rotate-180 shadow-none transition-all" : "transition-all"}`}                   >
-                        <i className={`expand-button mx-auto text-slate-400 fa-duotone fa-angle-down fa-2x ${expanded ? "transition-all" : "transition-all"}`}></i>                       
+                        <i className={`expand-button mx-auto text-slate-400 fa-duotone fa-angle-down fa-2x ${expanded ? "transition-all" : "transition-all"}`}></i>
                     </button>
                 </div>
             </div>

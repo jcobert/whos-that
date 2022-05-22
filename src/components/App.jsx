@@ -43,7 +43,7 @@ function App() {
       <Header />
       <div className='min-h-screen flex flex-col'>
         <div className="mt-16">
-          <div className="max-w-7xl mx-auto mt-24">
+          <div className="max-w-7xl mx-auto mt-12 md:mt-20">
             <FilterListbox
               filteredState={filtered}
               setFilteredState={setFiltered}

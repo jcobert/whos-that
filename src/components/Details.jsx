@@ -42,12 +42,18 @@ function Details(props) {
     //     props.setExpandState(true);
     // }
 
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -300;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+    }
+
     if (props.relationship !== "Single") {
         relationshipStatus = `${props.relationship} to`;
         if (props.relationship === "Dating") {
             relationshipStatus = `${props.relationship}`;
         }
-        partnerImgLink = <Link className="mt-2" to={`#${props.partner.id}`} onClick={goToPartner} onBlur={enterPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></Link>;
+        partnerImgLink = <Link className="mt-2" to={`#${props.partner.id}`} scroll={el => scrollWithOffset(el)} onClick={goToPartner} onBlur={enterPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></Link>;
     }
 
     return (

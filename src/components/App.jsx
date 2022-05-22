@@ -1,6 +1,7 @@
 import React from 'react';
 import people from "../people.json";
 import Header from "./Header";
+import Heading from './Heading';
 import Card from "./Card";
 import Footer from "./Footer"
 import FilterListbox from "./FilterListbox";
@@ -42,8 +43,9 @@ function App() {
     <div className='flex-grow'>
       <Header />
       <div className='min-h-screen flex flex-col'>
-        <div className="mt-16">
-          <div className="max-w-7xl mx-auto mt-12 md:mt-20">
+        <div className="mt-14">
+          <div className="max-w-7xl mx-auto mt-12 md:mt-20 md:flex md:items-end">
+            <Heading />
             <FilterListbox
               filteredState={filtered}
               setFilteredState={setFiltered}

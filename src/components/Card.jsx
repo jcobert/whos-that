@@ -57,15 +57,15 @@ function Card(props) {
 
     return (
         <>
-            <div ref={cardRef} className="text-center mt-8 mb-12 md:mt-12 md:mb-16 focus:outline-none" {...getToggleProps({
+            <div ref={cardRef} className="text-center mt-4 mb-8 md:mt-12 md:mb-16 focus:outline-none" {...getToggleProps({
                 onClick: () => setExpanded((prevExpanded) => !prevExpanded),
             })}>
-                <div id={props.id} className={`bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto p-3 md:p-6 rounded-xl border border-[#b3b3b3] shadow-md ${expanded ? "pb-8 md:pb-6 active-card" : "pb-4 md:pb-0"}`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter}>
-                    <div className="">
-                        <div className="relative bottom-8 md:bottom-12">
-                            <img className="rounded-full w-48 h-48 object-cover mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleAvatarShow} />
+                <div id={props.id} className={`bg-[#C5D4DE] md:w-11/12 md:max-w-2xl mx-auto p-3 md:p-6 rounded-xl border border-[#b3b3b3] shadow-md ${expanded ? "pb-8 md:pb-6 active-card" : "pb-4 md:pb-0"}`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter}>
+                    <div className="flex md:inline-block">
+                        <div className="relative md:bottom-12 flex-shrink-0">
+                            <img className="rounded-full w-24 md:w-48 h-24 md:h-48 object-cover md:mx-auto border-4 border-gray-100 shadow-md cursor-pointer" src={props.img} alt="avatar_img" onClick={handleAvatarShow} />
                         </div>
-                        <h2 className="mb-4 md:mb-8 -mt-4 md:-mt-8 text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
+                        <h2 className="md:mb-8 md:-mt-8 my-auto ml-4 md:ml-0 text-left text-[#2B4E6A] font-medium text-3xl md:text-3xl">{props.name}</h2>
                     </div>
                     <div {...getCollapseProps()}>
                         <Details

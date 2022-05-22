@@ -1,14 +1,12 @@
 import React from "react";
-import {
-    Switch,
-    Route
-} from "react-router-dom";
 import { HashLink as Link } from "react-router-hash-link";
 
 function Details(props) {
     let relationshipStatus = "Single";
-    let partnerImgTag = "";
     let partnerImgLink = "";
+
+    const [partnerOpen, setPartnerOpen] = React.useState(false);
+    const [hash, setHash] = React.useState("");
 
     function listItems(items) {
         const output = [];
@@ -26,19 +24,30 @@ function Details(props) {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
-    function goToPartner() {
+    function goToPartner(e) {
         let partner = props.partner.id;
         document.getElementById(props.id).classList.remove("active-card");
         props.linkChange(partner);
         document.getElementById(partner).classList.add("active-card");
+        // setPartnerOpen(false);
     }
+
+    function enterPartner(e) {
+        let url = e.currentTarget.href;
+        setHash(url.slice(url.indexOf('#') + 1));
+        setPartnerOpen(true);
+    }
+
+    // function handlePartnerOpen() {
+    //     props.setExpandState(true);
+    // }
 
     if (props.relationship !== "Single") {
         relationshipStatus = `${props.relationship} to`;
         if (props.relationship === "Dating") {
             relationshipStatus = `${props.relationship}`;
-        }        
-        partnerImgLink = <Link className="mt-2" to={`#${props.partner.id}`}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></Link>;
+        }
+        partnerImgLink = <Link className="mt-2" to={`#${props.partner.id}`} onClick={goToPartner} onBlur={enterPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></Link>;
     }
 
     return (

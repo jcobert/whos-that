@@ -8,7 +8,26 @@ function Card(props) {
     const [show, setShow] = React.useState(false);
     const [partnerLink, setPartnerLink] = React.useState(null);
     const [expanded, setExpanded] = React.useState(false);
-    const { getCollapseProps, getToggleProps } = useCollapse({ expanded })
+    const { getCollapseProps, getToggleProps } = useCollapse({ expanded });
+    const [activeCard, setActiveCard] = React.useState(null);
+    const cardRef = React.useRef(null);
+
+    // const firstRender = React.useRef(true);
+    // React.useLayoutEffect(() => {
+    //     if (firstRender.current) {
+    //         firstRender.current = false;
+    //         return;
+    //     }
+    //     console.log(partnerLink);        
+    //     if (hash == props.id) {
+    //         console.log(`linked to ${partnerLink} : ${props.partner.id}`);
+    //         cardRef.current.handleClick();
+    //         // setExpanded(true);
+    //     }
+    // }, [partnerLink]);
+
+    let url = window.location.hash;
+    let hash = url.slice(url.indexOf('#') + 1);
 
     function handleAvatarShow() {
         setShow(true);
@@ -20,7 +39,7 @@ function Card(props) {
         document.getElementById("root").classList.remove("blur-md");
     }
 
-    function handleCardEnter() {
+    function handleCardEnter(e) {
         let activeCards = Array.from(document.getElementsByClassName("active-card"));
         if (activeCards.length > 0) {
             activeCards.forEach(card => {
@@ -28,15 +47,17 @@ function Card(props) {
             });
         }
         document.getElementById(props.id).classList.add("active-card")
+        setActiveCard(props.id);
     }
 
     function handleCardExit() {
         document.getElementById(props.id).classList.remove("active-card");
+        setActiveCard(null);
     }
 
     return (
         <>
-            <div className="text-center mt-8 mb-12 md:mt-12 md:mb-16 focus:outline-none" {...getToggleProps({
+            <div ref={cardRef} className="text-center mt-8 mb-12 md:mt-12 md:mb-16 focus:outline-none" {...getToggleProps({
                 onClick: () => setExpanded((prevExpanded) => !prevExpanded),
             })}>
                 <div id={props.id} className={`bg-[#C5D4DE] w-11/12 md:max-w-2xl mx-auto p-3 md:p-6 rounded-xl border border-[#b3b3b3] shadow-md ${expanded ? "pb-8 md:pb-6 active-card" : "pb-4 md:pb-0"}`} onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter}>
@@ -64,7 +85,7 @@ function Card(props) {
                 </div>
                 <div onMouseEnter={handleCardEnter} onMouseLeave={handleCardExit} onFocus={handleCardEnter} className="relative rounded-2xl bottom-[1.5rem] scale-75 w-fit h-12 mx-auto -mb-10">
                     <button className={`rounded-2xl w-20 h-12 bg-[#C5D4DE] rounded-all ${expanded ? "rotate-180 shadow-none transition-all" : "transition-all"}`}                   >
-                        <i className={`expand-button mx-auto text-slate-400 fa-duotone fa-angle-down fa-2x ${expanded ? "transition-all" : "transition-all"}`}></i>                       
+                        <i className={`expand-button mx-auto text-slate-400 fa-duotone fa-angle-down fa-2x ${expanded ? "transition-all" : "transition-all"}`}></i>
                     </button>
                 </div>
             </div>

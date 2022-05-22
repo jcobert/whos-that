@@ -1,8 +1,12 @@
 import React from "react";
+import { HashLink as Link } from "react-router-hash-link";
 
 function Details(props) {
     let relationshipStatus = "Single";
-    let partnerImgTag = "";    
+    let partnerImgLink = "";
+
+    const [partnerOpen, setPartnerOpen] = React.useState(false);
+    const [hash, setHash] = React.useState("");
 
     function listItems(items) {
         const output = [];
@@ -20,11 +24,28 @@ function Details(props) {
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 
-    function goToPartner() {
+    function goToPartner(e) {
         let partner = props.partner.id;
         document.getElementById(props.id).classList.remove("active-card");
         props.linkChange(partner);
         document.getElementById(partner).classList.add("active-card");
+        // setPartnerOpen(false);
+    }
+
+    function enterPartner(e) {
+        let url = e.currentTarget.href;
+        setHash(url.slice(url.indexOf('#') + 1));
+        setPartnerOpen(true);
+    }
+
+    // function handlePartnerOpen() {
+    //     props.setExpandState(true);
+    // }
+
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -300;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
     }
 
     if (props.relationship !== "Single") {
@@ -32,7 +53,7 @@ function Details(props) {
         if (props.relationship === "Dating") {
             relationshipStatus = `${props.relationship}`;
         }
-        partnerImgTag = <a className="mt-2" href={`#${props.partner.id}`} onClick={goToPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></a>
+        partnerImgLink = <Link className="mt-2" to={`#${props.partner.id}`} scroll={el => scrollWithOffset(el)} onClick={goToPartner} onBlur={enterPartner}><img className="rounded-full w-20 h-auto mx-auto object-cover object-center shadow-md border-[3px] border-gray-100" src={props.partner.img} alt="avatar_img" /></Link>;
     }
 
     return (
@@ -61,7 +82,7 @@ function Details(props) {
                         <div className="col-start-3 col-span-2 flex flex-col justify-self-end">
                             <p className="font-semibold text-lg">{relationshipStatus}</p>
                             <p className="info">{props.relationship === "Single" ? "(Last I checked)" : props.partner.name}</p>
-                            {partnerImgTag}
+                            {partnerImgLink}
                         </div>
                     </div>
                 </div>

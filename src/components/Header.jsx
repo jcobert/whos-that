@@ -167,23 +167,29 @@ function Header(props) {
                                 </div>
                             </div>
                         </div>
-                        <Disclosure.Panel className="sm:hidden">
-                            <div className="px-2 pt-2 pb-3 space-y-1">
-                                {navigation.map((item) => (
-                                    <NavLink
-                                        key={item.name}
-                                        to={item.to}
-                                        className={({ isActive }) => (
-                                            `${isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'} block px-3 py-2 rounded-md text-base font-medium text-right`
-                                        )}
-                                        aria-current={item.current ? 'page' : undefined}
-                                        onClick={close}
-                                    >
-                                        {item.name}
-                                    </NavLink>
-                                ))}
-                            </div>
-                        </Disclosure.Panel>
+                        <Transition
+                            enter="transition duration-100 ease-out"
+                            enterFrom="transform scale-95 opacity-0"
+                            enterTo="transform scale-100 opacity-100"
+                        >
+                            <Disclosure.Panel className="sm:hidden">
+                                <div className="px-2 pt-2 pb-3 space-y-1">
+                                    {navigation.map((item) => (
+                                        <NavLink
+                                            key={item.name}
+                                            to={item.to}
+                                            className={({ isActive }) => (
+                                                `${isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'} block px-3 py-2 rounded-md text-base font-medium text-right`
+                                            )}
+                                            aria-current={item.current ? 'page' : undefined}
+                                            onClick={close}
+                                        >
+                                            {item.name}
+                                        </NavLink>
+                                    ))}
+                                </div>
+                            </Disclosure.Panel>
+                        </Transition>
                     </>
                 )}
             </Disclosure>

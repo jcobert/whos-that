@@ -33,6 +33,7 @@ function debounce(func, wait, immediate) {
 function Header(props) {
     const [prevScrollPos, setPrevScrollPos] = useState(0);
     const [visible, setVisible] = useState(true);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const handleScroll = debounce(() => {
         const currentScrollPos = window.pageYOffset;
@@ -49,6 +50,10 @@ function Header(props) {
 
     }, [prevScrollPos, visible, handleScroll]);
 
+    function handleHamburger (e) {
+        setMenuOpen(!menuOpen);
+    }
+
     return (
         <div>
             <Disclosure
@@ -62,9 +67,9 @@ function Header(props) {
                             <div className={`relative flex items-center justify-between h-16 ${visible ? "h-16" : "h-10"} transition-all`}>
                                 <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                                     {/* Mobile menu button*/}
-                                    <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                                    <Disclosure.Button onClick={handleHamburger} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
                                         <span className="sr-only">Open main menu</span>
-                                        {!close ? (
+                                        {menuOpen ? (
                                             <XIcon className="block h-6 w-6" aria-hidden="true" />
                                         ) : (
                                             <MenuIcon className="block h-6 w-6" aria-hidden="true" />
@@ -73,16 +78,26 @@ function Header(props) {
                                 </div>
                                 <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                                     <div className="flex-shrink-0 flex items-center">
-                                        <img
-                                            className={`block lg:hidden h-12 w-auto ${visible ? "h-12" : "h-8"}`}
-                                            src="images/logo-sm.png"
-                                            alt="Who's That?"
-                                        />
-                                        <img
-                                            className={`hidden lg:block h-12 w-auto ${visible ? "h-12" : "h-8"}`}
-                                            src="images/logo-sm.png"
-                                            alt="Who's That?"
-                                        />
+                                        <NavLink
+                                            key={'logoHome'}
+                                            to={'/'}
+                                        >
+                                            <img
+                                                className={`block lg:hidden h-12 w-auto ${visible ? "h-12" : "h-8"}`}
+                                                src="images/logo-sm.png"
+                                                alt="Who's That?"
+                                            />
+                                        </NavLink>
+                                        <NavLink
+                                            key={'logoHome'}
+                                            to={'/'}
+                                        >
+                                            <img
+                                                className={`hidden lg:block h-12 w-auto ${visible ? "h-12" : "h-8"}`}
+                                                src="images/logo-sm.png"
+                                                alt="Who's That?"
+                                            />
+                                        </NavLink>
                                     </div>
                                     <div className="hidden sm:block sm:ml-6 my-auto">
                                         <div className="flex space-x-4">
@@ -173,7 +188,7 @@ function Header(props) {
                             enterTo="transform scale-100 opacity-100"
                         >
                             <Disclosure.Panel className="sm:hidden">
-                                <div className="px-2 pt-2 pb-3 space-y-1">
+                                <div onClick={handleHamburger} className="px-2 pt-2 pb-3 space-y-1">
                                     {navigation.map((item) => (
                                         <NavLink
                                             key={item.name}

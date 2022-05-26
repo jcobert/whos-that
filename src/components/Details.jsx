@@ -5,8 +5,8 @@ function Details(props) {
     let relationshipStatus = "Single";
     let partnerImgLink = "";
 
-    const [partnerOpen, setPartnerOpen] = React.useState(false);
-    const [hash, setHash] = React.useState("");
+    // const [partnerOpen, setPartnerOpen] = React.useState(false);
+    // const [hash, setHash] = React.useState("");
 
     function listItems(items) {
         const output = [];
@@ -34,8 +34,8 @@ function Details(props) {
 
     function enterPartner(e) {
         let url = e.currentTarget.href;
-        setHash(url.slice(url.indexOf('#') + 1));
-        setPartnerOpen(true);
+        // setHash(url.slice(url.indexOf('#') + 1));
+        // setPartnerOpen(true);
     }
 
     // function handlePartnerOpen() {

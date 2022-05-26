@@ -19,7 +19,7 @@ function FilterListbox(props) {
         })
     }
 
-    function handleFilter() {
+    const handleFilter = React.useCallback(() => {
         if (selected === "All") {
             props.setSelectionState(props.cards);
         }
@@ -27,7 +27,7 @@ function FilterListbox(props) {
             props.setSelectionState(filterPeopleByAssoc(selected));
             props.setFilteredState(true);
         }
-    }
+    })
 
     return (
         <div className="w-11/12 md:w-72 mx-auto md:mr-4">

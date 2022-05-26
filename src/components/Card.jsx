@@ -9,7 +9,7 @@ function Card(props) {
     const [partnerLink, setPartnerLink] = React.useState(null);
     const [expanded, setExpanded] = React.useState(false);
     const { getCollapseProps, getToggleProps } = useCollapse({ expanded });
-    const [activeCard, setActiveCard] = React.useState(null);
+    // const [activeCard, setActiveCard] = React.useState(null);
     const cardRef = React.useRef(null);
 
     // const firstRender = React.useRef(true);
@@ -27,7 +27,7 @@ function Card(props) {
     // }, [partnerLink]);
 
     let url = window.location.hash;
-    let hash = url.slice(url.indexOf('#') + 1);
+    // let hash = url.slice(url.indexOf('#') + 1);
 
     function handleAvatarShow() {
         setShow(true);
@@ -47,12 +47,12 @@ function Card(props) {
             });
         }
         document.getElementById(props.id).classList.add("active-card")
-        setActiveCard(props.id);
+        // setActiveCard(props.id);
     }
 
     function handleCardExit() {
         document.getElementById(props.id).classList.remove("active-card");
-        setActiveCard(null);
+        // setActiveCard(null);
     }
 
     return (

@@ -4,38 +4,38 @@ import Heading from './Heading';
 import Card from "./Card";
 import FilterListbox from "./FilterListbox";
 
-let peopleCards = [];
-let associations = [];
-for (let i = 0; i < people.length; i++) {
-    let p = i;
-    if (people[i].hasOwnProperty("partner")) {
-        p = people[i].partner - 1;
-    }
-    peopleCards.push(
-        <Card
-            key={people[i].id}
-            id={people[i].id}
-            name={people[i].name}
-            img={people[i].img}
-            loc={people[i].loc}
-            assoc={people[i].assoc}
-            rel={people[i].rel}
-            partner={people[p]}
-            nicknames={people[i].nicknames}
-            dob={people[i].dob}
-        />
-    );
-    associations.push(people[i].assoc);
-}
-
-let uniqueAssoc = [...new Set(associations.flat())].sort();
-let associationList = uniqueAssoc;
-associationList.push("All");
-associationList.sort();
-
 function Home(props) {
     const [filtered, setFiltered] = React.useState(false);
-    const [selection, setSelection] = React.useState(peopleCards);
+    const [selection, setSelection] = React.useState("All");
+
+    let peopleCards = [];
+    let associations = [];
+    for (let i = 0; i < people.length; i++) {
+        let p = i;
+        if (people[i].hasOwnProperty("partner")) {
+            p = people[i].partner - 1;
+        }
+        peopleCards.push(
+            <Card
+                key={people[i].id}
+                id={people[i].id}
+                name={people[i].name}
+                img={people[i].img}
+                loc={people[i].loc}
+                assoc={people[i].assoc}
+                rel={people[i].rel}
+                partner={people[p]}
+                nicknames={people[i].nicknames}
+                dob={people[i].dob}
+            />
+        );
+        associations.push(people[i].assoc);
+    }
+
+    let uniqueAssoc = [...new Set(associations.flat())].sort();
+    let associationList = uniqueAssoc;
+    associationList.push("All");
+    associationList.sort();
 
     return (
         <div className="mt-14">

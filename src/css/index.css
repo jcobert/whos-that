@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  div[type='button'] {
+    -webkit-appearance: unset;
+    @apply px-4 md:px-0;
+  }
+}
+
 @layer components {
   .expand-button {
     text-align: center;

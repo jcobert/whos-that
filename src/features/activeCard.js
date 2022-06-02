@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialStateValue = 0;
+const initialStateValue = null;
 
 export const activeCardSlice = createSlice({
   name: "activeCard",
@@ -11,5 +11,7 @@ export const activeCardSlice = createSlice({
     },
   },
 });
+
+export const { setActive } = activeCardSlice.actions;
 
 export default activeCardSlice.reducer;

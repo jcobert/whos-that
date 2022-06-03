@@ -5,32 +5,16 @@ import CloseButton from "react-bootstrap/CloseButton";
 import useCollapse from "react-collapsed";
 import { useDispatch } from "react-redux";
 import { setActive } from "../features/activeCard";
+// import { useSelector } from "react-redux";
 
 function Card(props) {
   const [show, setShow] = React.useState(false);
   const [partnerLink, setPartnerLink] = React.useState(null);
   const [expanded, setExpanded] = React.useState(false);
   const { getCollapseProps, getToggleProps } = useCollapse({ expanded });
-  // const [activeCard, setActiveCard] = React.useState(null);
   const cardRef = React.useRef(null);
   const dispatch = useDispatch();
-
-  // const firstRender = React.useRef(true);
-  // React.useLayoutEffect(() => {
-  //     if (firstRender.current) {
-  //         firstRender.current = false;
-  //         return;
-  //     }
-  //     console.log(partnerLink);
-  //     if (hash == props.id) {
-  //         console.log(`linked to ${partnerLink} : ${props.partner.id}`);
-  //         cardRef.current.handleClick();
-  //         // setExpanded(true);
-  //     }
-  // }, [partnerLink]);
-
-  let url = window.location.hash;
-  // let hash = url.slice(url.indexOf('#') + 1);
+//   const activeCard = useSelector((state) => state.activeCard.value);
 
   function handleAvatarShow() {
     setShow(true);
@@ -42,26 +26,37 @@ function Card(props) {
     document.getElementById("root").classList.remove("blur-md");
   }
 
-  function handleCardEnter(e) {
-    let activeCards = Array.from(
-      document.getElementsByClassName("active-card")
+  function handleCardEnter() {
+    let hoveredCards = Array.from(
+      document.getElementsByClassName("card-hover")
     );
-    if (activeCards.length > 0) {
-      activeCards.forEach((card) => {
-        card.classList.remove("active-card");
+    if (hoveredCards.length > 0) {
+      hoveredCards.forEach((card) => {
+        card.classList.remove("card-hover");
       });
     }
-    document.getElementById(props.id).classList.add("active-card");
-    // setActiveCard(props.id);
+    document.getElementById(props.id).classList.add("card-hover");
   }
 
   function handleCardExit() {
-    document.getElementById(props.id).classList.remove("active-card");
-    // setActiveCard(null);
+    document.getElementById(props.id).classList.remove("card-hover");
   }
 
   function handleCardClick() {
-    dispatch(setActive(props.id));
+    dispatch(setActive({ id: props.id, method: "direct" }));
+    let activeCards = Array.from(
+        document.getElementsByClassName("active-card")
+      );
+      if (activeCards.length > 0) {
+        activeCards.forEach((card) => {
+          card.classList.remove("active-card");
+        });
+      }
+      document.getElementById(props.id).classList.add("active-card");
+  }
+
+  function handleCardFocus() {
+    document.getElementById(props.id).classList.add("active-card");
   }
 
   return (
@@ -80,13 +75,13 @@ function Card(props) {
           }`}
           onMouseEnter={handleCardEnter}
           onMouseLeave={handleCardExit}
-          onFocus={handleCardEnter}
+          onFocus={handleCardFocus}
           onClick={handleCardClick}
         >
           <div className="flex md:inline-block">
             <div className="relative md:bottom-12 flex-shrink-0">
               <img
-                className="rounded-full w-24 md:w-48 h-24 md:h-48 object-cover md:mx-auto border-4 border-gray-100 shadow-md cursor-pointer"
+                className="rounded-full w-24 md:w-48 h-24 md:h-48 object-cover md:mx-auto border-4 border-gray-100 shadow-md cursor-pointer hover:border-slate-400 hover:border-2"
                 src={props.img}
                 alt="avatar_img"
                 onClick={handleAvatarShow}
@@ -115,7 +110,7 @@ function Card(props) {
         <div
           onMouseEnter={handleCardEnter}
           onMouseLeave={handleCardExit}
-          onFocus={handleCardEnter}
+          onFocus={handleCardFocus}
           onClick={handleCardClick}
           className="relative rounded-2xl bottom-[1.5rem] scale-75 w-fit h-12 mx-auto -mb-10"
         >

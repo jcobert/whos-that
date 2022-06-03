@@ -3,12 +3,10 @@ import people from "../people.json";
 import Heading from "./Heading";
 import Card from "./Card";
 import FilterListbox from "./FilterListbox";
-import { useSelector } from "react-redux";
 
 function Home(props) {
   const [filtered, setFiltered] = React.useState(false);
   const [selection, setSelection] = React.useState("All");
-  const activeCard = useSelector((state) => state.activeCard.value);
 
   let peopleCards = [];
   let associations = [];
@@ -51,7 +49,6 @@ function Home(props) {
           cards={peopleCards}
           associations={associationList}
         />
-        <div>Active card: {activeCard}</div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
         {selection}

@@ -18,7 +18,7 @@ function SearchBar(props) {
       <Combobox
         onChange={() => {}}
         as="div"
-        className="bg-white border border-gray-300 rounded-md shadow-sm text-left divide-y divide-gray-100 overflow-hidden"
+        className="bg-white border border-gray-300 rounded-md shadow-sm text-left overflow-hidden"
       >
         <div className="flex items-center px-3 py-2">
           <SearchIcon className="h-6 w-6" aria-hidden="true" />
@@ -31,7 +31,7 @@ function SearchBar(props) {
           />
         </div>
         {filteredPeople.length > 0 && (
-          <Combobox.Options className="max-h-28 overflow-y-auto">
+          <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-28 overflow-y-auto">
             {filteredPeople.map((person) => (
               <Combobox.Option key={person.id}>
                 {({ active }) => (
@@ -47,11 +47,11 @@ function SearchBar(props) {
             ))}
           </Combobox.Options>
         )}
-        {
-            query && filteredPeople.length === 0 && (
-                <p className=" text-gray-500 px-4 py-2">Hmm can't find anyone by that name.</p>
-            )
-        }
+        {query && filteredPeople.length === 0 && (
+          <p className=" text-gray-500 px-4 py-2">
+            Hmm can't find anyone by that name.
+          </p>
+        )}
       </Combobox>
     </div>
   );

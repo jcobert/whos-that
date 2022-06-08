@@ -3,6 +3,7 @@ import people from "../people.json";
 import Heading from "./Heading";
 import Card from "./Card";
 import FilterListbox from "./FilterListbox";
+import SearchBar from "./SearchBar";
 
 function Home(props) {
   const [filtered, setFiltered] = React.useState(false);
@@ -49,6 +50,7 @@ function Home(props) {
           cards={peopleCards}
           associations={associationList}
         />
+        <SearchBar people={people} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
         {selection}

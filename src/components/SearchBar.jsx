@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Dialog, Combobox } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/outline";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar(props) {
   //   const [isOpen, setIsOpen] = useState(true);
   const people = props.people;
   const [query, setQuery] = useState("");
+  let navigate = useNavigate();
+  const [selected, setSelected] = useState("");
+
+  useEffect(() => {
+    handleSearch();
+  }, [query]);
 
   const filteredPeople = query
     ? people.filter((person) =>
@@ -13,10 +20,26 @@ function SearchBar(props) {
       )
     : [];
 
+  function filterPeopleBySearch(key) {
+    return props.cards.filter(function (p) {
+      return p.props.name.toLowerCase().includes(key);
+    });
+  }
+
+  const handleSearch = useCallback(() => {
+    if (query === "") {
+      props.setSelectionState(props.cards);
+    } else {
+      props.setSelectionState(filterPeopleBySearch(query.toLowerCase()));
+        // props.setFilteredState(true);
+    }
+    // navigate(`/#${person.id}`);
+  });
+
   return (
     <div className="w-11/12 mx-auto mt-4">
-      <Combobox
-        onChange={() => {}}
+      <Combobox        
+        onChange={setSelected}
         as="div"
         className="bg-white border border-gray-300 rounded-md shadow-sm text-left overflow-hidden"
       >
@@ -33,7 +56,7 @@ function SearchBar(props) {
         {filteredPeople.length > 0 && (
           <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-28 overflow-y-auto">
             {filteredPeople.map((person) => (
-              <Combobox.Option key={person.id}>
+              <Combobox.Option key={person.id} value={person}>
                 {({ active }) => (
                   <div
                     className={`px-4 py-2 ${

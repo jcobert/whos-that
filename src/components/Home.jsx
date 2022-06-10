@@ -4,10 +4,12 @@ import Heading from "./Heading";
 import Card from "./Card";
 import FilterListbox from "./FilterListbox";
 import SearchBar from "./SearchBar";
+import { Outlet } from "react-router-dom";
 
 function Home(props) {
   const [filtered, setFiltered] = React.useState(false);
   const [selection, setSelection] = React.useState("All");
+  const [found, setFound] = React.useState("");
 
   let peopleCards = [];
   let associations = [];
@@ -50,11 +52,19 @@ function Home(props) {
           cards={peopleCards}
           associations={associationList}
         />
-        <SearchBar people={people} />
+        <SearchBar
+          people={people}
+          selectionState={selection}
+          setSelectionState={setSelection}
+          foundState={found}
+          setFoundState={setFound}
+          cards={peopleCards}
+        />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
         {selection}
       </div>
+      <Outlet />
     </div>
   );
 }

@@ -33,13 +33,14 @@ function SearchBar(props) {
       props.setSelectionState(filterPeopleBySearch(query.toLowerCase()));
       // props.setFilteredState(true);
     }
-    // navigate(`/#${person.id}`);
   });
 
   return (
     <div className="w-11/12 mx-auto mt-4">
       <Combobox
-        onChange={setSelected}
+        onChange={(person) => {
+          setQuery(person.name);
+        }}
         as="div"
         className="bg-white border border-gray-300 rounded-md shadow-sm text-left overflow-hidden"
       >

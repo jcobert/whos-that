@@ -27,7 +27,7 @@ function SearchBar(props) {
   }
 
   const handleSearch = useCallback(() => {
-    if (query === "") {
+    if (query === "" || filteredPeople.length === 0) {
       props.setSelectionState(props.cards);
     } else {
       props.setSelectionState(filterPeopleBySearch(query.toLowerCase()));

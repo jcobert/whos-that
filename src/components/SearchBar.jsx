@@ -15,14 +15,21 @@ function SearchBar(props) {
   }, [query]);
 
   const filteredPeople = query
-    ? people.filter((person) =>
-        person.name.toLowerCase().includes(query.toLowerCase())
+    ? people.filter(
+        (person) =>
+          person.name.toLowerCase().includes(query.toLowerCase()) ||
+          person.nicknames.some((nickname) =>
+            nickname.toLowerCase().includes(query.toLowerCase())
+          )
       )
     : [];
 
   function filterPeopleBySearch(key) {
     return props.cards.filter(function (p) {
-      return p.props.name.toLowerCase().includes(key);
+      return p.props.name.toLowerCase().includes(key) ||
+      p.props.nicknames.some((nickname) =>
+        nickname.toLowerCase().includes(key)
+      );
     });
   }
 

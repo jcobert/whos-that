@@ -70,7 +70,12 @@ function Home(props) {
               />
             </div>
             <div className="self-end w-full lg:w-auto">
-              <ResetButton />
+              <ResetButton 
+                people={people}
+                selectionState={selection}
+                setSelectionState={setSelection}
+                cards={peopleCards}
+              />
             </div>
           </div>
         </div>

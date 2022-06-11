@@ -55,16 +55,25 @@ function SearchBar(props) {
           />
         </div>
         {filteredPeople.length > 0 && (
-          <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-28 overflow-y-auto">
+          <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-32 overflow-y-auto">
             {filteredPeople.map((person) => (
               <Combobox.Option key={person.id} value={person}>
                 {({ active }) => (
                   <div
-                    className={`px-4 py-2 ${
+                    className={`px-4 py-2 space-x-2 font-medium ${
                       active ? "text-white bg-[#3c76bd]" : "text-gray-900"
                     }`}
                   >
                     <span className="">{person.name}</span>
+                    
+                      <span>
+                        {person.nicknames.map((nickname, i) => (
+                          <span className={`font-light text-sm ${active ? "text-white" : "text-gray-400"}`}>
+                            {nickname}{`${person.nicknames.length - 1 === i ? "" : ", "}`}
+                          </span>
+                        ))}
+                      </span>
+
                   </div>
                 )}
               </Combobox.Option>

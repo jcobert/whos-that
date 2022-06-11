@@ -36,7 +36,7 @@ function SearchBar(props) {
   });
 
   return (
-    <div className="w-11/12 mx-auto mt-4">
+    <div className="w-11/12 md:w-auto lg:w-auto mx-auto md:ml-0 mt-4 md:mr-4">
       <Combobox
         onChange={(person) => {
           setQuery(person.name);
@@ -55,7 +55,7 @@ function SearchBar(props) {
           />
         </div>
         {filteredPeople.length > 0 && (
-          <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-32 overflow-y-auto">
+          <Combobox.Options className="absolute z-50 mt-1 py-1 bg-white border border-gray-200 shadow-md rounded-md max-h-32 overflow-y-auto overflow-elipsis">
             {filteredPeople.map((person) => (
               <Combobox.Option key={person.id} value={person}>
                 {({ active }) => (
@@ -64,16 +64,19 @@ function SearchBar(props) {
                       active ? "text-white bg-[#3c76bd]" : "text-gray-900"
                     }`}
                   >
-                    <span className="">{person.name}</span>
-                    
-                      <span>
-                        {person.nicknames.map((nickname, i) => (
-                          <span className={`font-light text-sm ${active ? "text-white" : "text-gray-400"}`}>
-                            {nickname}{`${person.nicknames.length - 1 === i ? "" : ", "}`}
-                          </span>
-                        ))}
-                      </span>
-
+                    <span>{person.name}</span>
+                    <span>
+                      {person.nicknames.map((nickname, i) => (
+                        <span
+                          className={`font-light text-sm ${
+                            active ? "text-white" : "text-gray-400"
+                          }`}
+                        >
+                          {nickname}
+                          {`${person.nicknames.length - 1 === i ? "" : ", "}`}
+                        </span>
+                      ))}
+                    </span>
                   </div>
                 )}
               </Combobox.Option>

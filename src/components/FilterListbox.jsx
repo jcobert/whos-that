@@ -29,7 +29,7 @@ function FilterListbox(props) {
   });
 
   return (
-    <div className="w-11/12 md:w-72 mx-auto md:mr-4">
+    <div className="w-11/12 md:w-auto lg:w-72 mx-auto md:mr-4">
       <Listbox value={selected} onChange={setSelected}>
         {({ open }) => (
           <>
@@ -37,7 +37,7 @@ function FilterListbox(props) {
               Filter by Association
             </Listbox.Label>
             <div className="mt-1 relative">
-              <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-[#7396c8] focus:border-[#7396c8] sm:text-sm">
+              <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-[#7396c8] focus:border-[#7396c8]">
                 <span className="flex items-center">
                   <FilterIcon className="h-5 w-5" aria-hidden="true" />
                   <span className="ml-3 block truncate">{selected}</span>

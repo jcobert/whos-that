@@ -43,23 +43,33 @@ function Home(props) {
   return (
     <div className="mt-14">
       <div className="max-w-7xl mx-auto mt-12 md:mt-20 md:flex md:items-end">
-        <Heading />
-        <FilterListbox
-          filteredState={filtered}
-          setFilteredState={setFiltered}
-          selectionState={selection}
-          setSelectionState={setSelection}
-          cards={peopleCards}
-          associations={associationList}
-        />
-        <SearchBar
-          people={people}
-          selectionState={selection}
-          setSelectionState={setSelection}
-          foundState={found}
-          setFoundState={setFound}
-          cards={peopleCards}
-        />
+        <div className="md:grid md:grid-cols-4 lg:grid-cols-3 space-x-2">
+          <div className="md:col-start-1 md:col-span-2 lg:col-span-1">
+            <Heading />
+          </div>
+          <div className="md:flex md:flex-col lg:flex-row items-center md:col-start-3 md:col-span-2 lg:col-start-2">
+            <div className="self-end md:w-full">
+              <FilterListbox
+                filteredState={filtered}
+                setFilteredState={setFiltered}
+                selectionState={selection}
+                setSelectionState={setSelection}
+                cards={peopleCards}
+                associations={associationList}
+              />
+            </div>
+            <div className="flex-grow self-end md:w-full">
+              <SearchBar
+                people={people}
+                selectionState={selection}
+                setSelectionState={setSelection}
+                foundState={found}
+                setFoundState={setFound}
+                cards={peopleCards}
+              />
+            </div>
+          </div>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto mt-10">
         {selection}

@@ -5,6 +5,7 @@ import Card from "./Card";
 import FilterListbox from "./FilterListbox";
 import SearchBar from "./SearchBar";
 import { Outlet } from "react-router-dom";
+import ResetButton from "./ResetButton";
 
 function Home(props) {
   const [filtered, setFiltered] = React.useState(false);
@@ -47,8 +48,8 @@ function Home(props) {
           <div className="md:col-start-1 md:col-span-2 lg:col-span-1">
             <Heading />
           </div>
-          <div className="md:flex md:flex-col lg:flex-row items-center md:col-start-3 md:col-span-2 lg:col-start-2">
-            <div className="self-end md:w-full">
+          <div className="md:flex md:flex-col lg:flex-row items-center space-y-4 md:col-start-3 md:col-span-2 lg:col-start-2">
+            <div className="self-end md:w-full lg:w-auto">
               <FilterListbox
                 filteredState={filtered}
                 setFilteredState={setFiltered}
@@ -67,6 +68,9 @@ function Home(props) {
                 setFoundState={setFound}
                 cards={peopleCards}
               />
+            </div>
+            <div className="self-end w-full lg:w-auto">
+              <ResetButton />
             </div>
           </div>
         </div>

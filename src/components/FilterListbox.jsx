@@ -29,7 +29,7 @@ function FilterListbox(props) {
   });
 
   return (
-    <div className="w-11/12 md:w-auto lg:w-72 mx-auto md:mr-4">
+    <div className="w-11/12 md:w-auto lg:w-48 mx-auto md:mr-4">
       <Listbox value={selected} onChange={setSelected}>
         {({ open }) => (
           <>

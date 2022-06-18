@@ -1,9 +1,14 @@
 import { useState, useCallback, useEffect } from "react";
 import { RefreshIcon } from "@heroicons/react/outline";
+import { useDispatch } from "react-redux";
+import { setFilteredState } from "../features/currentAssortment";
 
 function ResetButton(props) {
+  const dispatch = useDispatch();
+
   function handleClick() {
     props.setSelectionState(props.cards);
+    dispatch(setFilteredState({ filter: false, search: false }));
   }
 
   return (

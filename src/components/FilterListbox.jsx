@@ -1,6 +1,8 @@
 import React from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon, FilterIcon } from "@heroicons/react/outline";
+import { useSelector, useDispatch } from "react-redux";
+import { setFilteredState } from "../features/currentAssortment";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -8,6 +10,8 @@ function classNames(...classes) {
 
 function FilterListbox(props) {
   const [selected, setSelected] = React.useState("All");
+  const currentAssortment = useSelector((state) => state.currentAssortment.value);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     handleFilter();
@@ -28,9 +32,14 @@ function FilterListbox(props) {
     }
   });
 
+  const handleChange = React.useCallback((e) => {
+    setSelected(e);
+    dispatch(setFilteredState( {filter: true, search: true }));
+  });
+
   return (
     <div className="w-11/12 md:w-auto lg:w-48 mx-auto md:mr-4">
-      <Listbox value={selected} onChange={setSelected}>
+      <Listbox value={selected} onChange={handleChange}>
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium text-gray-700">
@@ -40,7 +49,7 @@ function FilterListbox(props) {
               <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-[#7396c8] focus:border-[#7396c8]">
                 <span className="flex items-center">
                   <FilterIcon className="h-5 w-5" aria-hidden="true" />
-                  <span className="ml-3 block truncate">{selected}</span>
+                  <span className="ml-3 block truncate">{currentAssortment.filter === false ? "All" : selected}</span>
                 </span>
                 <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <SelectorIcon

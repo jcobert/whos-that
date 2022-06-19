@@ -8,7 +8,6 @@ function Contact(props) {
         <h1 className="text-4xl font-life-savers font-extrabold text-[#2B4E6A]">
           Contact
         </h1>
-        {/* <p>Questions? Comments? Concerns?</p> */}
       </div>
       <div className="text-center mt-8 md:mt-14 space-y-8 md:space-y-14">
         <ChatIcon className="w-12 md:w-16 mx-auto text-slate-600" />

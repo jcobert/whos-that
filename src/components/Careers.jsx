@@ -9,7 +9,7 @@ function Careers(props) {
           Careers
         </h1>
         <div className="mt-8 md:mt-14 space-y-8 md:space-y-14">
-          <BriefcaseIcon className="w-12 mx-auto text-slate-600" />
+          <BriefcaseIcon className="w-12 md:w-16 mx-auto text-slate-600" />
           <p className="">
             We're not hiring at the moment but if you are, please feel free to{" "}
             <a

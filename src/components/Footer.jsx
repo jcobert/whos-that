@@ -13,7 +13,7 @@ function Footer() {
                     <a className="p-3 md:py-2 text-white hover:text-[#C5D4DE] transition-all ease-in-out duration-200" href="/"><i className="fa-brands fa-twitter fa-2x md:text-2xl"></i></a>
                 </div>
                 <div className="text-sm md:col-start-1 md:row-start-1 md:justify-self-start md:self-center md:inline-block">
-                    <h6 className="mb-4 pt-2 md:mb-0 md:pt-0">© {currentYear} Who's That?</h6>
+                    <h6 className="mb-4 pt-2 md:mb-0 md:pt-0">º {currentYear} Who's That?</h6>
                 </div>
             </div>
         </div>

@@ -4,13 +4,15 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "./css/index.css";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, current } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import activeCardReducer from "./features/activeCard";
+import currentAssortmentReducer from "./features/currentAssortment";
 
 const store = configureStore({
   reducer: {
     activeCard: activeCardReducer,
+    currentAssortment: currentAssortmentReducer
   },
 });
 

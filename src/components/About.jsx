@@ -29,7 +29,7 @@ function About(props) {
             <p>
             <span className="font-life-savers font-bold text-[#2B4E6A]">Who’s That?</span> is here to save you from that awkward moment when you
               say hi, but can’t recall their name or have to nudge and
-              discreetly ask your partner, "wait, <span className="font-life-savers font-bold text-[#2B4E6A]">Who’s That?</span> again?"
+              discreetly ask your partner, "wait, <span className="font-life-savers font-bold text-[#2B4E6A]">Who’s That?</span>"
             </p>
           </div>
         </div>

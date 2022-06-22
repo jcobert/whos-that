@@ -9,7 +9,7 @@ function Footer() {
         <div className="flex flex-row justify-around md:col-start-3 md:justify-self-end">
           <a
             className="p-3 md:py-2 text-sky-300 active:text-[#C5D4DE] hover:text-sky-200 transition-all ease-in-out duration-200"
-            href="/"
+            href="https://github.com/jcobert/whos-that"
           >
             <span className="flex items-center space-x-2">
               <i className="fa-solid fa-code fa-2x md:text-2xl"></i>
